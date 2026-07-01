@@ -1,0 +1,24 @@
+name: Plex DLNA Advertiser Proxy
+version: "0.1.0"
+slug: plex_dlna_proxy
+description: Advertises Plex DLNA on the LAN and rewrites Docker-internal DLNA URLs for TVs.
+startup: services
+boot: auto
+init: false
+host_network: true
+arch:
+  - aarch64
+  - amd64
+options:
+  plex_url: "http://127.0.0.1:32469"
+  advertise_ip: "192.168.0.31"
+  listen_port: 32470
+  friendly_name: "Plex DLNA Proxy (use this)"
+schema:
+  plex_url: url
+  advertise_ip: str
+  listen_port: port
+  friendly_name: str
+build_from:
+  aarch64: ghcr.io/home-assistant/aarch64-base:3.22
+  amd64: ghcr.io/home-assistant/amd64-base:3.22
